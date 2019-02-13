@@ -1,0 +1,25 @@
+body {
+    margin: 0px;
+}
+.background {
+    margin: 0px;
+}
+
+.banner {
+    margin-bottom: 0px;
+    
+    background-image: url(../images/FIFA-Ballon-Dor.jpg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 12%;
+    color:  #FFEB3B;
+}
+.lead{
+    font-size: 24px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #FFEB3B;
+    border-color: #FFEB3B;
+}
