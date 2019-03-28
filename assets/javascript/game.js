@@ -19,36 +19,35 @@ var fullName = [];
 // function initializes program and gets a random word 
 // & creates empty array with underscore 
 function initializeProgram() {
-
     compRandom = (names[Math.floor(Math.random() * names.length)]);
-
+    spacesArr = [];
+    wrongLetters = [];
+    fullName = [];
     for (i = 0; i < compRandom.length; i++) {
         spacesArr[i] = "_";
         console.log(spacesArr);
     }
-    wrongLetters =[];
-    fullName = [];
-    $("#guessed-letters").text(" ");
-    $("#nameArr").text(spacesArr);
+    //$("#nameArr").text(spacesArr);
     console.log(compRandom);
 }
 
-function restartGame() {
-    // restartGame().show();
-    tries = 5;
-    $("#chances-left").text(tries);
+function startGame() {
     initializeProgram();
-    
-    $("#nameArr").text();
-    $("#guessed-letters").text(" ");
-    $("#startBtn").show();
-    
-    $("#restartBtn").show();
-
+    $("#startBtn").hide();
+    tries = 5;
+    $(".keepscore").show();
+    $(".wordSection").show();
+    $("#chances-left").text(tries);
+    $("#guessed-letters").text("");
+    $("#nameArr").text(spacesArr);
 }
+function restartGame() {
 
-//runs program
-// initializeProgram();
+    $("#restartBtn").hide();
+    $("#chances-left").text(tries);
+    $("#nameArr").text("");
+    initializeProgram();
+}
 
 //this line creates listner function (checkKeyPress) everytime a keyup event happens. "Keyup" is my parameter
 document.addEventListener("keyup", checkKeyPress, false);
@@ -58,8 +57,10 @@ document.addEventListener("keyup", checkKeyPress, false);
 function checkKeyPress(stroke) {
 
     if (stroke.keyCode >= "65" && stroke.keyCode <= "90") {
+
         checkForLetter(stroke.key);
         console.log(stroke.key);
+
         usedletters.push(checkForLetter);
 
     } else {
@@ -71,70 +72,60 @@ function checkKeyPress(stroke) {
 //function checks for letter in word/location & updates spaceArr
 //switching space for letter
 function checkForLetter(letter) {
+
+
     if (compRandom.includes(letter)) {
 
         for (i = 0; i < compRandom.length; i++) {
             // console.log(compRandom);
-            if (compRandom[i] == letter) {
+            if (letter == compRandom[i]) {
+                debugger;
+                // console.log(compRandom[i]);
                 spacesArr[i] = letter;
+                console.log(spacesArr[i]);
+
 
                 if (letter === spacesArr[i]) {
-                    debugger;
-                    guessedLetter.push(letter);
 
                     // spacesArr.push([i]);
+                    console.log(spacesArr);
+                    guessedLetter.push(letter);
+                    console.log(guessedLetter);
                 }
                 $("#nameArr").text(spacesArr);
                 console.log(spacesArr);
+
                 fullName[i] = letter;
                 console.log(fullName);
             }
-
-        } if (compRandom.length === fullName.length) {
+        }
+        if (compRandom.length === fullName.length) {
             console.log("you win");
             wins++;
+            //show win
             $("#wins").text(wins);
+            $("#guessed-letters").text('');
             $("#restartBtn").show();
-            // restartGame();
+
         }
-    }
-    else {
+    } else {
         tries -= 1;
         debugger;
         wrongLetters.push(letter);
         $("#guessed-letters").text(wrongLetters);
+
+
+        // $("#guessed-letters").text(wrongLetters);
         $("#chances-left").text(tries);
+
         if (tries === 0) {
             // alert("You lose");
             $("#nameArr").text(compRandom);
-            loses ++;
+            loses++;
+            debugger;
             $("#loses").text(loses);
-           
             $("#restartBtn").show();
+
         }
     }
 }
-
-
-function startGame() {
-    initializeProgram();
-    $("#startBtn").hide();
-    tries = 5;
-    $("#chances-left").text(tries);
-    $("#guessed-letters").text(" ");
-    $("#nameArr").text(spacesArr);
-}
-
-
-// function prints letter into space array for holding
-//needs to print 
-// function printAns (){
-//     var wordAns= "";
-//     for( i =0; i < spacesArr.length; i++){
-//         wordAns = wordAns + spacesArr[i];
-//     }
-// }
-
-// check for wrong letters/path
-// write to the screen
-// give points 

@@ -32,3 +32,12 @@ h3 {
 h1 {
     text-shadow: 1px 0px 4px black;
 }
+#restartBtn {
+    display: none;
+}
+.keepscore {
+    display: none;
+}
+.wordSection{
+    display: none;
+}
