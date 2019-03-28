@@ -23,9 +23,9 @@
         <h1 class="display-4">Hangman Game: Ballon D'Or</h1>
         <p class="lead"> Guess the players who have won Fifa's Ballon D'Or!</p>
         <hr class="my-4">
-        <button class="btn btn-primary btn-lg" onclick="startGame()" id="startBtn" type="button">Start Game</button>
+        <button class="btn btn-warning btn-lg" onclick="startGame()" id="startBtn" type="button">Start Game</button>
         <br>
-        <button class="btn btn-primary btn-lg" onclick="restartGame()" id="restartBtn" type="button">Restart Game</button>
+        <button class="btn btn-warning btn-lg" onclick="startGame()" id="restartBtn" type="button">Restart Game</button>
     </div>
 
     <div class="container-fluid text-center wordSection" >
@@ -46,20 +46,11 @@
             <div class="col-md-4 col-sm-12">
                 <h3>Loses: <span id="loses"></span></h3>
             </div>
-            <div class="col-md-4 col-sm-12 wins">
+            <div class="col-md-4 col-sm-12">
                 <h3>Chances left: <span id="chances-left"> 5</span></h3>
             </div>
         </div>
 
-    </div>
-
-
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="usedLettersSpace"></div>
-            </div>
-        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
