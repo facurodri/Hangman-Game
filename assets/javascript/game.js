@@ -22,11 +22,13 @@ function initializeProgram() {
     spacesArr = [];
     wrongLetters = [];
     fullName = [];
-    for (i = 0; i < compRandom.length; i++) {
-        spacesArr[i] = "_";
+
+        for (i = 0; i < compRandom.length; i++) {
+            spacesArr[i] = "_";
+        }
+        console.log(compRandom);
     }
-    console.log(compRandom);
-}
+
 
 function startGame() {
     initializeProgram();
@@ -47,7 +49,7 @@ document.addEventListener("keyup", checkKeyPress, false);
 // function validates to make sure they typed A-Z key otherwise it alerts its not valid key
 
 function checkKeyPress(stroke) {
-    
+
     if (stroke.keyCode >= "65" && stroke.keyCode <= "90") {
 
         checkForLetter(stroke.key);
@@ -56,7 +58,7 @@ function checkKeyPress(stroke) {
 
     } else {
         alert("That is not a letter! Try again using A-Z");
-        
+
     }
 }
 
@@ -68,13 +70,13 @@ function checkForLetter(letter) {
     if (compRandom.includes(letter)) {
 
         for (i = 0; i < compRandom.length; i++) {
-            
+
             if (letter == compRandom[i]) {
-               
+
                 spacesArr[i] = letter;
-                
+
                 $("#nameArr").text(spacesArr);
-               
+
 
                 fullName.push(letter);
                 console.log(fullName);
@@ -89,7 +91,7 @@ function checkForLetter(letter) {
 
         }
     } else {
-        if (!wrongLetters.includes(letter)){
+        if (!wrongLetters.includes(letter)) {
             tries -= 1;
             wrongLetters.push(letter);
         }
