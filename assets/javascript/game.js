@@ -13,6 +13,7 @@ var tries = 5;
 var wins = 0;
 var loses = 0;
 var fullName = [];
+var display = [];
 
 // function initializes program and gets a random word 
 // & creates empty array with underscore 
@@ -23,29 +24,17 @@ function initializeProgram() {
     wrongLetters = [];
     fullName = [];
     emptyName = [];
-    
     emptyName = compRandom.split("");
-
     console.log(emptyName);
-    
     for (i = 0; i < emptyName.length; i++) {
-       
-        if(emptyName[i] !== " "){
-            spacesArr[i] = ("_");
-            
+        if (emptyName[i] != " ") {
+            spacesArr.push("_");
         } else {
-            spacesArr[i] = " ";          
-        }  
-    }   
-    
-    emptyName.push(spacesArr);
-    
-    emptyName = spacesArr.join(" ");
-              
-    // console.log(emptyName);
-    console.log(compRandom);
-    
+            spacesArr.push(" ");
+            fullName.push(" ");
+        }
     }
+}
 
 function startGame() {
     initializeProgram();
@@ -57,66 +46,44 @@ function startGame() {
     $(".wordSection").show();
     $("#chances-left").text(tries);
     $("#guessed-letters").text("");
-    $("#nameArr").text(emptyName);
+    $("#nameArr").html(spacesArr.join("&nbsp;"));
 }
-
 //this line creates listner function (checkKeyPress) everytime a keyup event happens. "Keyup" is my parameter
 document.addEventListener("keyup", checkKeyPress, false);
-
 // function validates to make sure they typed A-Z key otherwise it alerts its not valid key
-
 function checkKeyPress(stroke) {
-
     if (stroke.keyCode >= "65" && stroke.keyCode <= "90") {
-    
         checkForLetter(stroke.key.toUpperCase());
-        // console.log(checkForLetter);
         usedletters.push(checkForLetter);
-       
-
     } else {
         alert("That is not a letter! Try again using A-Z");
-
     }
 }
 
 //function checks for letter in word/location & updates spaceArr
 //switching space for letter
 function checkForLetter(letter) {
-    
-    // letter = letter.toUpperCase();
-    if (compRandom.includes(letter)) {
+    console.log(fullName.includes(letter));
+    if (compRandom.includes(letter) && !(fullName.includes(letter))) {
 
         for (i = 0; i < compRandom.length; i++) {
             if (letter.toUpperCase() == compRandom[i]) {
-                
                 spacesArr[i] = letter;
-                $("#nameArr").text(spacesArr);
-                
+                $("#nameArr").html(spacesArr.join("&nbsp;"));
                 fullName.push(spacesArr[i]);
-
-                console.log(fullName.length);
-                console.log(spacesArr.length);
-                
-                
             }
         }
-
-        
         if (compRandom.length === fullName.length) {
-            
-                console.log("winner")
-                wins++;
-                //show win
-                $("#nameArr").text(compRandom);
-                $("#wins").text(wins);
-                $("#guessed-letters").text('');
-                $("#restartBtn").show();
-            
-
+            console.log("winner");
+            wins++;
+            //show win
+            $("#nameArr").text(compRandom);
+            $("#wins").text(wins);
+            $("#guessed-letters").text('');
+            $("#restartBtn").show();
         }
     } else {
-        if (!wrongLetters.includes(letter)) {
+        if (!wrongLetters.includes(letter) && !(compRandom.includes(letter))) {
             tries -= 1;
             wrongLetters.push(letter.toUpperCase());
         }
@@ -130,7 +97,6 @@ function checkForLetter(letter) {
             loses++;
             $("#loses").text(loses);
             $("#restartBtn").show();
-
         }
     }
 }
