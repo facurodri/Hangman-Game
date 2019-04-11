@@ -4,12 +4,14 @@
 // check player input is in computers choice
 // if it is NOT store the letter in array of fails and deduct 1 point from turn
 
-var names = ["Lionel Messi", "cristiano ronaldo", "Micheal Platini", "Luka Modric", "stanley matthews"];
+var names = ["Lionel Messi", "Cristiano Ronaldo", "Micheal Platini", "Luka Modric", "stanley matthews"," Alfredo Di Stefano","Johan Cruyff","Marco van Basten","Franz Beckenbauer",
+            "Kevin Keegan","KarlHeinz Rummenigge","Luis Suarez","Eusebio","Bobby Charlton","Raymond Kopa","Gerd Muller","Zinedine Zidane","Gianni Rivera",
+            "Ruud Gullit","Lothar Matthaus","Roberto Baggio","Hristo Stoichkov","Andriy Shevchenko","George Best","Allan Simonsen","Ronaldinho","Ronaldo Nazario de Lima"];
 var compRandom;
 var usedletters = [];
 var spacesArr = [];
 var wrongLetters = [];
-var tries = 5;
+var tries = 10;
 var wins = 0;
 var loses = 0;
 var fullName = [];
@@ -40,7 +42,7 @@ function startGame() {
     initializeProgram();
     $("#startBtn").hide();
     $("#restartBtn").hide();
-    tries = 5;
+    tries = 10;
     $(".keepscore").show();
     $("#chances-left").show();
     $(".wordSection").show();

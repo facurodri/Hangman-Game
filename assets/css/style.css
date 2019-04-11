@@ -5,10 +5,13 @@ body {
 .background {
     margin: 0px;
 }
-h3, h2 {
+h3,h2 {
     color: black;
     font-style: italic;
+    font-weight: 600;
+    font-variant: petite-caps;
 }
+
 .banner {
     margin-bottom: 0px;
     background-image: url(../images/FIFA-Ballon-Dor.jpg);
@@ -23,21 +26,28 @@ h3, h2 {
 }
 .lead{
     font-size: 24px;
-    font-weight: 400;
-    text-shadow: 2px 3px 3px black;
+    font-weight: 350;
+    text-shadow: 2px 3px 2px black;
+    font-variant-caps: all-petite-caps
 }
 
 .btn-warning {
+    font-variant: petite-caps;
+    font-weight: 500;
+    font-style: italic;
+    text-shadow: 1px 0px 1px grey;
     color:black;
-    font-weight: 600;
+    /* font-weight: 600; */
     background-color: #FFEB3B;
     border-color: #FFEB3B;
-    box-shadow: 2rem;
+    box-shadow: 2px 1px 3px black;
 }
 
 h1 {
     text-shadow: 1px 0px 4px black;
+    font-variant-caps: small-caps;
 }
+
 #restartBtn {
     display: none;
 }
